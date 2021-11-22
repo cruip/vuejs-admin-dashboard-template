@@ -49,6 +49,8 @@ npm run build
 #### Customize configuration
 See [Configuration Reference](https://vitejs.dev/guide/).
 
+[![React version of Mosaic](https://user-images.githubusercontent.com/2683512/142938809-1ba3f7e3-3f43-47cb-bbb5-1618057cab6d.png)](https://github.com/cruip/tailwind-dashboard-template)
+
 ## Credits
 
 - [Nucleo](https://nucleoapp.com/)
