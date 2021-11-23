@@ -21,7 +21,7 @@
                 <div class="font-semibold text-left">Spent</div>
               </th>
               <th class="p-2 whitespace-nowrap">
-                <div class="font-semibold text-left">Country</div>
+                <div class="font-semibold text-center">Country</div>
               </th>
             </tr>
           </thead>
