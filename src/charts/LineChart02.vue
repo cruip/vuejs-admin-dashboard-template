@@ -5,20 +5,19 @@
         <div class="text-3xl font-bold text-gray-800 mr-2">$1,482</div>
         <div class="text-sm font-semibold text-white px-1.5 bg-yellow-500 rounded-full">-22%</div>
       </div>
-      <div class="flex-grow ml-2 mb-1">
+      <div class="grow ml-2 mb-1">
         <ul ref="legend" class="flex flex-wrap justify-end"></ul>
       </div>
     </div>
   </div>
   <!-- Chart built with Chart.js 3 -->
-  <div class="flex-grow">
+  <div class="grow">
     <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
   </div>  
 </template>
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { focusHandling } from 'cruip-js-toolkit'
 import {
   Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip,
 } from 'chart.js'
@@ -117,7 +116,6 @@ export default {
               button.onclick = () => {
                 c.setDatasetVisibility(item.datasetIndex, !c.isDatasetVisible(item.datasetIndex))
                 c.update()
-                focusHandling('outline')
               }
               // Color box
               const box = document.createElement('span')

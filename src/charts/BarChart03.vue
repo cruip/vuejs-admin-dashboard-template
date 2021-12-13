@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-grow flex flex-col justify-center">
+  <div class="grow flex flex-col justify-center">
     <div>
       <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
     </div>

@@ -5,7 +5,7 @@
       <div ref="chartDeviation" class="text-sm font-semibold text-white px-1.5 rounded-full"></div>
     </div>
   </div>
-  <div class="flex-grow">
+  <div class="grow">
     <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
   </div>
 </template>

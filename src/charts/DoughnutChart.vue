@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-grow flex flex-col justify-center">
+  <div class="grow flex flex-col justify-center">
     <div>
       <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
     </div>
@@ -11,7 +11,6 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { focusHandling } from 'cruip-js-toolkit'
 import {
   Chart, DoughnutController, ArcElement, TimeScale, Tooltip,
 } from 'chart.js'
@@ -82,7 +81,6 @@ export default {
               button.onclick = () => {
                 c.toggleDataVisibility(item.index, !item.index)
                 c.update()
-                focusHandling('outline')
               }
               // Color box
               const box = document.createElement('span')

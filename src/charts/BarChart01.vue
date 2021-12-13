@@ -2,14 +2,14 @@
   <div class="px-5 py-3">
     <ul ref="legend" class="flex flex-wrap"></ul>
   </div>
-  <div class="flex-grow">
+  <div class="grow">
     <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
   </div>
 </template>
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { focusHandling } from 'cruip-js-toolkit'
+
 import {
   Chart, BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend,
 } from 'chart.js'
@@ -111,7 +111,6 @@ export default {
               button.onclick = () => {
                 c.setDatasetVisibility(item.datasetIndex, !c.isDatasetVisible(item.datasetIndex))
                 c.update()
-                focusHandling('outline')
               }
               // Color box
               const box = document.createElement('span')

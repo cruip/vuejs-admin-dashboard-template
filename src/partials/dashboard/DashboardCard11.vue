@@ -10,7 +10,7 @@
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->
-    <div class="flex-grow">
+    <div class="grow">
       <!-- Change the height attribute to adjust the chart height -->
       <BarChart :data="chartData" :width="595" :height="48" />
     </div>
