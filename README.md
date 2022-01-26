@@ -11,9 +11,7 @@ Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
 
 Check the live demo here 👉️ [https://mosaic-vue.cruip.com/](https://mosaic-vue.cruip.com/)
 
-## Mosaic PRO
-
-Looking for more pages and components? Have a look at the **premium version** here 👉️ [https://cruip.com/demos/mosaic/](https://cruip.com/demos/mosaic/)
+[![Mosaic Pro](https://user-images.githubusercontent.com/2683512/151177961-2ff5b838-3745-48dc-80c8-80b043971483.png)](https://cruip.com/mosaic/)
 
 ## Table of contents
 
