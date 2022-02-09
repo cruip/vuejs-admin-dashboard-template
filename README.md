@@ -15,6 +15,10 @@ Check the live demo here 👉️ [https://mosaic-vue.cruip.com/](https://mosaic-
 
 [![Mosaic Pro](https://user-images.githubusercontent.com/2683512/151177961-2ff5b838-3745-48dc-80c8-80b043971483.png)](https://cruip.com/mosaic/)
 
+## Design files
+
+If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3sigqHe
+
 ## Table of contents
 
 * [Usage](#usage)
