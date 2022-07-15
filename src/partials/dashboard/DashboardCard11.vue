@@ -52,8 +52,8 @@ export default {
         {
           label: 'Not satisfied about the quality of the product',
           data: [81],
-          backgroundColor: tailwindConfig().theme.colors['light-blue'][400],
-          hoverBackgroundColor: tailwindConfig().theme.colors['light-blue'][500],
+          backgroundColor: tailwindConfig().theme.colors['sky'][400],
+          hoverBackgroundColor: tailwindConfig().theme.colors['sky'][500],
           barPercentage: 1,
           categoryPercentage: 1,
         },

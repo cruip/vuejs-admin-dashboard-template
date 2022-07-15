@@ -1,5 +1,10 @@
 # CHANGELOG.md
 
+## [1.3.0] - 2022-07-15
+
+- Replace Sass with CSS files
+- Update dependencies
+
 ## [1.1.0] - 2021-12-13
 
 - Update Tailwind 3

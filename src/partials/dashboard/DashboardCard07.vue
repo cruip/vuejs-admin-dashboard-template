@@ -51,7 +51,7 @@
                 <div class="text-center">267</div>
               </td>
               <td class="p-2">
-                <div class="text-center text-light-blue-500">4.7%</div>
+                <div class="text-center text-sky-500">4.7%</div>
               </td>
             </tr>
             <!-- Row -->
@@ -75,7 +75,7 @@
                 <div class="text-center">249</div>
               </td>
               <td class="p-2">
-                <div class="text-center text-light-blue-500">4.4%</div>
+                <div class="text-center text-sky-500">4.4%</div>
               </td>
             </tr>
             <!-- Row -->
@@ -99,7 +99,7 @@
                 <div class="text-center">224</div>
               </td>
               <td class="p-2">
-                <div class="text-center text-light-blue-500">4.2%</div>
+                <div class="text-center text-sky-500">4.2%</div>
               </td>
             </tr>
             <!-- Row -->
@@ -123,7 +123,7 @@
                 <div class="text-center">220</div>
               </td>
               <td class="p-2">
-                <div class="text-center text-light-blue-500">4.2%</div>
+                <div class="text-center text-sky-500">4.2%</div>
               </td>
             </tr>
             <!-- Row -->
@@ -147,7 +147,7 @@
                 <div class="text-center">204</div>
               </td>
               <td class="p-2">
-                <div class="text-center text-light-blue-500">3.9%</div>
+                <div class="text-center text-sky-500">3.9%</div>
               </td>
             </tr>
           </tbody>
