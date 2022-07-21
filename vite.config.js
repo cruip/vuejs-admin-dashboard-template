@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   define: {
     'process.env': process.env
-  },  
+  },
   plugins: [vue()],
   resolve: {
     alias: [
@@ -15,16 +15,7 @@ export default defineConfig({
           return val.replace(/^~/, "");
         },
       },
-      {
-        find: '@tailwindConfig',
-        replacement: () => './src/css/tailwind.config.js',
-      }
     ],
-  },
-  optimizeDeps: {
-    include: [
-      '@tailwindConfig',
-    ]
   },
   build: {
     commonjsOptions: {
