@@ -1,5 +1,9 @@
 # CHANGELOG.md
 
+## [1.4.0] - 2022-08-30
+
+- Update sidebar
+
 ## [1.3.0] - 2022-07-15
 
 - Replace Sass with CSS files
