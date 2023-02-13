@@ -45,8 +45,8 @@ export default {
           },
           scales: {
             y: {
-              grid: {
-                drawBorder: false,
+              border: {
+                display: false,
               },
               ticks: {
                 maxTicksLimit: 5,
@@ -62,9 +62,11 @@ export default {
                   month: 'MMM YY',
                 },
               },
+              border: {
+                display: false,
+              },              
               grid: {
                 display: false,
-                drawBorder: false,
               },
             },
           },

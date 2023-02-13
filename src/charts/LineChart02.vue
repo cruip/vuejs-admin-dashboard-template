@@ -48,8 +48,10 @@ export default {
           },
           scales: {
             y: {
+              border: {
+                display: false,
+              },              
               grid: {
-                drawBorder: false,
                 beginAtZero: true,
               },
               ticks: {
@@ -66,9 +68,11 @@ export default {
                   month: 'MMM YY',
                 },
               },
+              border: {
+                display: false,
+              },              
               grid: {
                 display: false,
-                drawBorder: false,
               },
               ticks: {
                 autoSkipPadding: 48,

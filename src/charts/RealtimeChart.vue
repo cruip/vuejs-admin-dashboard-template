@@ -57,8 +57,8 @@ export default {
           },
           scales: {
             y: {
-              grid: {
-                drawBorder: false,
+              border: {
+                display: false,
               },
               suggestedMin: 30,
               suggestedMax: 80,
@@ -77,9 +77,11 @@ export default {
                   second: 'H:mm:ss',
                 },
               },
+              border: {
+                display: false,
+              },              
               grid: {
                 display: false,
-                drawBorder: false,
               },
               ticks: {
                 autoSkipPadding: 48,
