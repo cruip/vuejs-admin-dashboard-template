@@ -10,7 +10,10 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { useDark } from '@vueuse/core'
+import { chartColors } from './ChartjsConfig'
+
 import {
   Chart, DoughnutController, ArcElement, TimeScale, Tooltip,
 } from 'chart.js'
@@ -29,6 +32,8 @@ export default {
     const canvas = ref(null)
     const legend = ref(null)
     let chart = null
+    const darkMode = useDark()
+    const { tooltipTitleColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors
     
     onMounted(() => {
       const ctx = canvas.value
@@ -44,6 +49,12 @@ export default {
             legend: {
               display: false,
             },
+            tooltip: {
+              titleColor: darkMode.value ? tooltipTitleColor.dark : tooltipTitleColor.light,
+              bodyColor: darkMode.value ? tooltipBodyColor.dark : tooltipBodyColor.light,
+              backgroundColor: darkMode.value ? tooltipBgColor.dark : tooltipBgColor.light,
+              borderColor: darkMode.value ? tooltipBorderColor.dark : tooltipBorderColor.light,
+            },            
           },
           interaction: {
             intersect: false,
@@ -71,12 +82,7 @@ export default {
               li.style.margin = tailwindConfig().theme.margin[1]
               // Button element
               const button = document.createElement('button')
-              button.classList.add('btn-xs')
-              button.style.backgroundColor = tailwindConfig().theme.colors.white
-              button.style.borderWidth = tailwindConfig().theme.borderWidth[1]
-              button.style.borderColor = tailwindConfig().theme.colors.gray[200]
-              button.style.color = tailwindConfig().theme.colors.gray[500]
-              button.style.boxShadow = tailwindConfig().theme.boxShadow.md
+              button.classList.add('btn-xs', 'bg-white', 'dark:bg-slate-800', 'text-slate-500', 'dark:text-slate-400', 'border', 'border-slate-200', 'dark:border-slate-700', 'shadow-md')
               button.style.opacity = item.hidden ? '.3' : ''
               button.onclick = () => {
                 c.toggleDataVisibility(item.index, !item.index)
@@ -108,6 +114,23 @@ export default {
     })
 
     onUnmounted(() => chart.destroy())
+
+    watch(
+      () => darkMode.value,
+      () => {
+        if (darkMode.value) {
+          chart.options.plugins.tooltip.titleColor = tooltipTitleColor.dark
+          chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.dark
+          chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.dark
+          chart.options.plugins.tooltip.borderColor = tooltipBorderColor.dark
+        } else {
+          chart.options.plugins.tooltip.titleColor = tooltipTitleColor.light
+          chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.light
+          chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.light
+          chart.options.plugins.tooltip.borderColor = tooltipBorderColor.light
+        }
+        chart.update('none')
+      })         
 
     return {
       canvas,

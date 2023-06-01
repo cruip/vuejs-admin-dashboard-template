@@ -4,14 +4,17 @@
       <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
     </div>
     <div class="px-5 pt-2 pb-2">
-      <ul ref="legend" class="text-sm divide-y divide-gray-100"></ul>
-      <ul class="text-sm divide-y divide-gray-100"></ul>
+      <ul ref="legend" class="text-sm divide-y divide-slate-100 dark:divide-slate-700"></ul>
+      <ul class="text-sm divide-y divide-slate-100 dark:divide-slate-700"></ul>
     </div>
   </div>  
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { useDark } from '@vueuse/core'
+import { chartColors } from './ChartjsConfig'
+
 import {
   Chart, BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend,
 } from 'chart.js'
@@ -30,6 +33,8 @@ export default {
     const canvas = ref(null)
     const legend = ref(null)
     let chart = null
+    const darkMode = useDark()
+    const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors    
     
     onMounted(() => {
 
@@ -72,6 +77,9 @@ export default {
                 title: () => false, // Disable tooltip title
                 label: (context) => context.parsed.x,
               },
+              bodyColor: darkMode.value ? tooltipBodyColor.dark : tooltipBodyColor.light,
+              backgroundColor: darkMode.value ? tooltipBgColor.dark : tooltipBgColor.light,
+              borderColor: darkMode.value ? tooltipBorderColor.dark : tooltipBorderColor.light,               
             },
           },
           interaction: {
@@ -133,6 +141,21 @@ export default {
     })
 
     onUnmounted(() => chart.destroy())
+
+    watch(
+      () => darkMode.value,
+      () => {
+        if (darkMode.value) {
+          chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.dark
+          chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.dark
+          chart.options.plugins.tooltip.borderColor = tooltipBorderColor.dark
+        } else {
+          chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.light
+          chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.light
+          chart.options.plugins.tooltip.borderColor = tooltipBorderColor.light
+        }
+        chart.update('none')
+      })      
 
     return {
       canvas,
