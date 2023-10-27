@@ -115,7 +115,7 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    axios.get(`http://localhost:8000/clinics`).then((res) => {
+    axios.get(`https://be8you77we.execute-api.us-east-1.amazonaws.com/clinics`).then((res) => {
       this.clinics = res.data.data[0][1];
       this.isLoading = false;
     }).catch((error) => this.isLoading = false)
@@ -126,7 +126,7 @@ export default {
     },
     selectedClinic: function(val, oldVal) {
       this.isLoading = true;
-      axios.get(`http://localhost:8000/appointment/${val.id}`).then((res) => {
+      axios.get(`https://be8you77we.execute-api.us-east-1.amazonaws.com/appointment/${val.id}`).then((res) => {
         this.chartData = ref({
           labels: ['Appointment Completed', 'Appointment Cancelled', 'Total'],
           datasets: [
