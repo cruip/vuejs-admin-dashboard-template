@@ -130,7 +130,16 @@ export default {
           chart.options.plugins.tooltip.borderColor = tooltipBorderColor.light
         }
         chart.update('none')
-      })         
+      })
+
+    watch(
+      () => props.data,
+      (data) => {
+        // update chart
+        chart.data = data
+        chart.update()      
+      }
+    )
 
     return {
       canvas,

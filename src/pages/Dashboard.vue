@@ -9,69 +9,30 @@
       
       <!-- Site header -->
       <Header :sidebarOpen="sidebarOpen" @toggle-sidebar="sidebarOpen = !sidebarOpen" />
-
+      <loading v-model:active="isLoading"
+        :is-full-page="true"/>
       <main>
         <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
-          <!-- Welcome banner -->
-          <WelcomeBanner />
-          
           <!-- Dashboard actions -->
-          <div class="sm:flex sm:justify-between sm:items-center mb-8">
-
-            <!-- Left: Avatars -->
-            <DashboardAvatars />
+          <div class="sm:items-center mb-8">
+            <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+              <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Select Clinic/</span>
+              <select type="text" v-model="selectedClinic" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                <option v-for="clinic in clinics" :key="clinic.id" :value="clinic">{{clinic.name}}</option>
+              </select>
+            </div>
 
             <!-- Right: Actions -->
-            <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-
-              <!-- Filter button -->
-              <FilterButton align="right" />
-              <!-- Datepicker built with flatpickr -->
-              <Datepicker align="right" />
-              <!-- Add view button -->
-              <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                  <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                      <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                  </svg>
-                  <span class="hidden xs:block ml-2">Add view</span>
-              </button>
+            <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-start gap-2 mt-3">
+              <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+                <!-- Chart built with Chart.js 3 -->
+                <!-- Change the height attribute to adjust the chart height -->
+                <DoughnutChart :data="chartData" width="389" height="260" v-show="selectedClinic !== {}"/>
+              </div>
             </div>
 
           </div>
-
-          <!-- Cards -->
-          <div class="grid grid-cols-12 gap-6">
-
-            <!-- Line chart (Acme Plus) -->
-            <DashboardCard01 />
-            <!-- Line chart (Acme Advanced) -->
-            <DashboardCard02 />
-            <!-- Line chart (Acme Professional) -->
-            <DashboardCard03 />
-            <!-- Bar chart (Direct vs Indirect) -->
-            <DashboardCard04 />
-            <!-- Line chart (Real Time Value) -->
-            <DashboardCard05 />
-            <!-- Doughnut chart (Top Countries) -->
-            <DashboardCard06 />
-            <!-- Table (Top Channels) -->
-            <DashboardCard07 />
-            <!-- Line chart (Sales Over Time) -->
-            <DashboardCard08 />
-            <!-- Stacked bar chart (Sales VS Refunds) -->
-            <DashboardCard09 />
-            <!-- Card (Customers)  -->
-            <DashboardCard10 />
-            <!-- Card (Reasons for Refunds)   -->
-            <DashboardCard11 /> 
-            <!-- Card (Recent Activity) -->
-            <DashboardCard12 />
-            <!-- Card (Income/Expenses) -->
-            <DashboardCard13 />
-
-          </div>
-
         </div>
       </main>
 
@@ -103,7 +64,12 @@ import DashboardCard10 from '../partials/dashboard/DashboardCard10.vue'
 import DashboardCard11 from '../partials/dashboard/DashboardCard11.vue'
 import DashboardCard12 from '../partials/dashboard/DashboardCard12.vue'
 import DashboardCard13 from '../partials/dashboard/DashboardCard13.vue'
+import { tailwindConfig } from '../utils/Utils'
 import Banner from '../partials/Banner.vue'
+import axios from 'axios';
+import DoughnutChart from '../charts/DoughnutChart.vue'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 export default {
   name: 'Dashboard',
@@ -128,6 +94,8 @@ export default {
     DashboardCard12,
     DashboardCard13,
     Banner,
+    DoughnutChart,
+    Loading,
   },
   setup() {
 
@@ -136,6 +104,55 @@ export default {
     return {
       sidebarOpen,
     }  
+  },
+  data() {
+    return {
+      clinics: [],
+      selectedClinic: {},
+      chartData: ref({}),
+      isLoading: false
+    }
+  },
+  mounted() {
+    this.isLoading = true;
+    axios.get(`http://localhost:8000/clinics`).then((res) => {
+      this.clinics = res.data.data[0][1];
+      this.isLoading = false;
+    }).catch((error) => this.isLoading = false)
+  },
+  watch: {
+    clinics: function(val, oldVal) {
+
+    },
+    selectedClinic: function(val, oldVal) {
+      this.isLoading = true;
+      axios.get(`http://localhost:8000/appointment/${val.id}`).then((res) => {
+        this.chartData = ref({
+          labels: ['Appointment Completed', 'Appointment Cancelled', 'Total'],
+          datasets: [
+            {
+              label: 'Appointment Details',
+              data: [
+                res.data.data[0][1]['appointmentsCompleted'], res.data.data[0][1]['appointmentsCancelled'], res.data.data[0][1]['total']
+              ],
+              backgroundColor: [
+                tailwindConfig().theme.colors.indigo[500],
+                tailwindConfig().theme.colors.blue[400],
+                tailwindConfig().theme.colors.indigo[800],
+              ],
+              hoverBackgroundColor: [
+                tailwindConfig().theme.colors.indigo[600],
+                tailwindConfig().theme.colors.blue[500],
+                tailwindConfig().theme.colors.indigo[900],
+              ],
+              borderWidth: 0,
+            },
+          ],
+        });
+
+        this.isLoading = false;
+      }).catch((error) => this.isLoading = false)
+    }
   }
 }
 </script>
