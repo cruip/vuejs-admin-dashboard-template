@@ -14,6 +14,7 @@
     "chartjs-adapter-moment": "^1.0.1",
     "flatpickr": "^4.6.13",
     "moment": "^2.29.4",
+    "recordrtc": "^5.6.2",
     "vue": "^3.2.20",
     "vue-flatpickr-component": "^11.0.3",
     "vue-router": "^4.2.5"
