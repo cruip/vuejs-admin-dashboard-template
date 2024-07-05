@@ -4,8 +4,8 @@
       <canvas ref="canvas" :data="data" :width="width" :height="height"></canvas>
     </div>
     <div class="px-5 pt-2 pb-2">
-      <ul ref="legend" class="text-sm divide-y divide-slate-100 dark:divide-slate-700"></ul>
-      <ul class="text-sm divide-y divide-slate-100 dark:divide-slate-700"></ul>
+      <ul ref="legend" class="text-sm divide-y divide-gray-100 dark:divide-gray-700/60"></ul>
+      <ul class="text-sm divide-y divide-gray-100 dark:divide-gray-700/60"></ul>
     </div>
   </div>  
 </template>

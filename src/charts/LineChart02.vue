@@ -1,12 +1,12 @@
 <template>
   <div class="px-5 py-3">
-    <div class="flex flex-wrap justify-between items-end">
+    <div class="flex flex-wrap justify-between items-end gap-y-2 gap-x-4">
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">$1,482</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-amber-500 rounded-full">-22%</div>
+        <div class="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">$1,482</div>
+        <div class="text-sm font-medium text-red-700 px-1.5 bg-red-500/20 rounded-full">-22%</div>
       </div>
-      <div class="grow ml-2 mb-1">
-        <ul ref="legend" class="flex flex-wrap justify-end"></ul>
+      <div class="grow mb-1">
+        <ul ref="legend" class="flex flex-wrap gap-x-4 sm:justify-end"></ul>
       </div>
     </div>
   </div>
@@ -122,7 +122,6 @@ export default {
             const items = c.options.plugins.legend.labels.generateLabels(c)
             items.slice(0, 2).forEach((item) => {
               const li = document.createElement('li')
-              li.style.marginLeft = tailwindConfig().theme.margin[3]
               // Button element
               const button = document.createElement('button')
               button.style.display = 'inline-flex'
@@ -144,7 +143,7 @@ export default {
               box.style.pointerEvents = 'none'
               // Label
               const label = document.createElement('span')
-              label.classList.add('text-slate-500', 'dark:text-slate-400')
+              label.classList.add('text-gray-500', 'dark:text-gray-400')
               label.style.fontSize = tailwindConfig().theme.fontSize.sm[0]
               label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight
               const labelText = document.createTextNode(item.text)

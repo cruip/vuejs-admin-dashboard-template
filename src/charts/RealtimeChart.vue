@@ -1,8 +1,8 @@
 <template>
   <div class="px-5 py-3">
     <div class="flex items-start">
-      <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2 tabular-nums">$<span ref="chartValue">57.81</span></div>
-      <div ref="chartDeviation" class="text-sm font-semibold text-white px-1.5 rounded-full"></div>
+      <div class="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2 tabular-nums">$<span ref="chartValue">57.81</span></div>
+      <div ref="chartDeviation" class="text-sm font-medium px-1.5 rounded-full"></div>
     </div>
   </div>
   <div class="grow">
@@ -21,7 +21,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { tailwindConfig, formatValue } from '../utils/Utils'
+import { tailwindConfig, hexToRGB, formatValue } from '../utils/Utils'
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Tooltip)
 
@@ -44,10 +44,12 @@ export default {
       const diff = ((currentValue - previousValue) / previousValue) * 100
       chartValue.value.innerHTML = data.datasets[0].data[data.datasets[0].data.length - 1]
       if (diff < 0) {
-        chartDeviation.value.style.backgroundColor = tailwindConfig().theme.colors.amber[500]
+        chartDeviation.value.style.backgroundColor = `rgba(${hexToRGB(tailwindConfig().theme.colors.red[500])}, 0.2)`
+        chartDeviation.value.style.color = tailwindConfig().theme.colors.red[700];
       } else {
-        chartDeviation.value.style.backgroundColor = tailwindConfig().theme.colors.emerald[500]
-      }
+        chartDeviation.value.style.backgroundColor = `rgba(${hexToRGB(tailwindConfig().theme.colors.green[500])}, 0.2)`
+        chartDeviation.value.style.color = tailwindConfig().theme.colors.green[700];
+      }      
       chartDeviation.value.innerHTML = `${diff > 0 ? '+' : ''}${diff.toFixed(2)}%`
     }    
     
@@ -105,7 +107,7 @@ export default {
             },
             tooltip: {
               titleFont: {
-                weight: '600',
+                weight: 600,
               },
               callbacks: {
                 label: (context) => formatValue(context.parsed.y),

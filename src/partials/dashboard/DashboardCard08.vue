@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-    <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
-      <h2 class="font-semibold text-slate-800 dark:text-slate-100">Sales Over Time (all stores)</h2>
+  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+    <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
+      <h2 class="font-semibold text-gray-800 dark:text-gray-100">Sales Over Time (all stores)</h2>
     </header>
     <!-- Chart built with Chart.js 3 -->
     <!-- Change the height attribute to adjust the chart height -->
@@ -11,6 +11,7 @@
 
 <script>
 import { ref } from 'vue'
+import { chartAreaGradient } from '../../charts/ChartjsConfig'
 import LineChart from '../../charts/LineChart02.vue'
 
 // Import utilities
@@ -24,15 +25,15 @@ export default {
   setup() {
     const chartData = ref({
       labels: [
-        '12-01-2020', '01-01-2021', '02-01-2021',
-        '03-01-2021', '04-01-2021', '05-01-2021',
-        '06-01-2021', '07-01-2021', '08-01-2021',
-        '09-01-2021', '10-01-2021', '11-01-2021',
-        '12-01-2021', '01-01-2022', '02-01-2022',
-        '03-01-2022', '04-01-2022', '05-01-2022',
-        '06-01-2022', '07-01-2022', '08-01-2022',
-        '09-01-2022', '10-01-2022', '11-01-2022',
-        '12-01-2022', '01-01-2023',
+        '12-01-2022', '01-01-2023', '02-01-2023',
+        '03-01-2023', '04-01-2023', '05-01-2023',
+        '06-01-2023', '07-01-2023', '08-01-2023',
+        '09-01-2023', '10-01-2023', '11-01-2023',
+        '12-01-2023', '01-01-2024', '02-01-2024',
+        '03-01-2024', '04-01-2024', '05-01-2024',
+        '06-01-2024', '07-01-2024', '08-01-2024',
+        '09-01-2024', '10-01-2024', '11-01-2024',
+        '12-01-2024', '01-01-2025',
       ],
       datasets: [
         // Indigo line
@@ -44,17 +45,17 @@ export default {
             122, 110, 104, 152, 166, 233, 268,
             252, 284, 284, 333, 323,
           ],
-          borderColor: tailwindConfig().theme.colors.indigo[500],
+          borderColor: tailwindConfig().theme.colors.violet[500],
           fill: false,
           borderWidth: 2,
-          tension: 0,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-          pointHoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-          pointBorderWidth: 0,
-          pointHoverBorderWidth: 0,          
-          clip: 20,
+        pointBackgroundColor: tailwindConfig().theme.colors.violet[500],
+        pointHoverBackgroundColor: tailwindConfig().theme.colors.violet[500],
+        pointBorderWidth: 0,
+        pointHoverBorderWidth: 0,          
+        clip: 20,
+        tension: 0.2,
         },
         // Blue line
         {
@@ -65,16 +66,16 @@ export default {
             276, 0, 124, 42, 124, 88, 88,
             215, 156, 88, 124, 64,
           ],
-          borderColor: tailwindConfig().theme.colors.blue[400],
+          borderColor: tailwindConfig().theme.colors.sky[500],
           fill: false,
           borderWidth: 2,
-          tension: 0,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.blue[400],
+          pointBackgroundColor: tailwindConfig().theme.colors.sky[500],
           clip: 20,
+          tension: 0.2,
         },
-        // emerald line
+        // green line
         {
           label: 'Average',
           data: [
@@ -83,14 +84,14 @@ export default {
             223, 188, 114, 162, 200, 150, 118,
             118, 76, 122, 230, 268,
           ],
-          borderColor: tailwindConfig().theme.colors.emerald[500],
+          borderColor: tailwindConfig().theme.colors.green[500],
           fill: false,
           borderWidth: 2,
-          tension: 0,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+          pointBackgroundColor: tailwindConfig().theme.colors.green[500],
           clip: 20,
+          tension: 0.2,
         },
       ],
     })

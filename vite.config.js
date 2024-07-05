@@ -1,3 +1,4 @@
+import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -8,15 +9,15 @@ export default defineConfig({
   },
   plugins: [vue()],
   resolve: {
-    alias: [
-      {
-        find: /^~.+/,
-        replacement: (val) => {
-          return val.replace(/^~/, "");
-        },
-      },
-    ],
+    alias: {
+      '@tailwindConfig': path.resolve(__dirname, 'tailwind.config.js'),
+    },
   },
+  optimizeDeps: {
+    include: [
+      '@tailwindConfig',
+    ]
+  },  
   build: {
     commonjsOptions: {
       transformMixedEsModules: true,

@@ -12,7 +12,7 @@
       aria-expanded="tooltipOpen"
       @click.prevent
     >
-      <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+      <svg class="fill-current text-gray-400 dark:text-gray-500" width="16" height="16" viewBox="0 0 16 16">
         <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
       </svg>
     </button>
@@ -26,7 +26,7 @@
         leave-to-class="opacity-0"
       >
         <div
-          v-show="tooltipOpen" class="rounded border overflow-hidden shadow-lg"
+          v-show="tooltipOpen" class="rounded-lg border overflow-hidden shadow-lg"
           :class="[
             colorClasses(bg),
             sizeClasses(size),
@@ -66,24 +66,24 @@ export default {
     const sizeClasses = (size) => {
       switch (size) {
         case 'lg':
-          return 'min-w-72  p-3';
+          return 'min-w-72 px-3 py-2';
         case 'md':
-          return 'min-w-56 p-3';
+          return 'min-w-56 px-3 py-2';
         case 'sm':
-          return 'min-w-44 p-2';
+          return 'min-w-44 px-3 py-2';
         default:
-          return 'p-2';
+          return 'px-3 py-2';
       }
     }
 
     const colorClasses = (bg) => {
       switch (bg) {
         case 'light':
-          return 'bg-white text-slate-600 border-slate-200'
+          return 'bg-white text-gray-600 border-gray-200'
         case 'dark':
-          return 'bg-slate-700 text-slate-100 border-slate-600'
+          return 'bg-gray-800 text-gray-100 border-gray-700/60'
         default:
-          return 'text-slate-600 bg-white dark:bg-slate-700 dark:text-slate-100 border-slate-200 dark:border-slate-600'
+          return 'text-gray-600 bg-white dark:bg-gray-800 dark:text-gray-100 border-gray-200 dark:border-gray-700/60'
       }
     }      
 

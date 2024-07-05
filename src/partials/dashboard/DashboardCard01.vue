@@ -1,26 +1,24 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+  <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
     <div class="px-5 pt-5">
       <header class="flex justify-between items-start mb-2">
-        <!-- Icon -->
-        <img src="../../images/icon-01.svg" width="32" height="32" alt="Icon 01" />
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Acme Plus</h2>
         <EditMenu align="right" class="relative inline-flex">
           <li>
-            <a class="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" href="#0">Option 1</a>
+            <a class="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" href="#0">Option 1</a>
           </li>
           <li>
-            <a class="font-medium text-sm text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 flex py-1 px-3" href="#0">Option 2</a>
+            <a class="font-medium text-sm text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-200 flex py-1 px-3" href="#0">Option 2</a>
           </li>
           <li>
-            <a class="font-medium text-sm text-rose-500 hover:text-rose-600 flex py-1 px-3" href="#0">Remove</a>
+            <a class="font-medium text-sm text-red-500 hover:text-red-600 flex py-1 px-3" href="#0">Remove</a>
           </li>
         </EditMenu>
       </header>
-      <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Acme Plus</h2>
-      <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Sales</div>
+      <div class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-1">Sales</div>
       <div class="flex items-start">
-        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">$24,780</div>
-        <div class="text-sm font-semibold text-white px-1.5 bg-emerald-500 rounded-full">+49%</div>
+        <div class="text-3xl font-bold text-gray-800 dark:text-gray-100 mr-2">$24,780</div>
+        <div class="text-sm font-medium text-green-700 px-1.5 bg-green-500/20 rounded-full">+49%</div>
       </div>
     </div>
     <!-- Chart built with Chart.js 3 -->
@@ -33,6 +31,7 @@
 
 <script>
 import { ref } from 'vue'
+import { chartAreaGradient } from '../../charts/ChartjsConfig'
 import LineChart from '../../charts/LineChart01.vue'
 import EditMenu from '../../components/DropdownEditMenu.vue'
 
@@ -48,15 +47,15 @@ export default {
   setup() {
     const chartData = ref({
       labels: [
-        '12-01-2020', '01-01-2021', '02-01-2021',
-        '03-01-2021', '04-01-2021', '05-01-2021',
-        '06-01-2021', '07-01-2021', '08-01-2021',
-        '09-01-2021', '10-01-2021', '11-01-2021',
-        '12-01-2021', '01-01-2022', '02-01-2022',
-        '03-01-2022', '04-01-2022', '05-01-2022',
-        '06-01-2022', '07-01-2022', '08-01-2022',
-        '09-01-2022', '10-01-2022', '11-01-2022',
-        '12-01-2022', '01-01-2023',
+        '12-01-2022', '01-01-2023', '02-01-2023',
+        '03-01-2023', '04-01-2023', '05-01-2023',
+        '06-01-2023', '07-01-2023', '08-01-2023',
+        '09-01-2023', '10-01-2023', '11-01-2023',
+        '12-01-2023', '01-01-2024', '02-01-2024',
+        '03-01-2024', '04-01-2024', '05-01-2024',
+        '06-01-2024', '07-01-2024', '08-01-2024',
+        '09-01-2024', '10-01-2024', '11-01-2024',
+        '12-01-2024', '01-01-2025',
       ],
       datasets: [
         // Indigo line
@@ -68,17 +67,24 @@ export default {
             252, 423, 622, 470, 532,
           ],
           fill: true,
-          backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-          borderColor: tailwindConfig().theme.colors.indigo[500],
+          backgroundColor: function(context) {
+            const chart = context.chart;
+            const {ctx, chartArea} = chart;
+            return chartAreaGradient(ctx, chartArea, [
+              { stop: 0, color: `rgba(${hexToRGB(tailwindConfig().theme.colors.violet[500])}, 0)` },
+              { stop: 1, color: `rgba(${hexToRGB(tailwindConfig().theme.colors.violet[500])}, 0.2)` }
+            ]);
+          },
+          borderColor: tailwindConfig().theme.colors.violet[500],
           borderWidth: 2,
-          tension: 0,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-          pointHoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+          pointBackgroundColor: tailwindConfig().theme.colors.violet[500],
+          pointHoverBackgroundColor: tailwindConfig().theme.colors.violet[500],
           pointBorderWidth: 0,
           pointHoverBorderWidth: 0,          
           clip: 20,
+          tension: 0.2,
         },
         // Gray line
         {
@@ -88,16 +94,16 @@ export default {
             314, 314, 314, 388, 314, 202, 202,
             202, 202, 314, 720, 642,
           ],
-          borderColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
+          borderColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.gray[500])}, 0.25)`,
           borderWidth: 2,
-          tension: 0,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
-          pointHoverBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.slate[500])}, 0.25)`,
+          pointBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.gray[500])}, 0.25)`,
+          pointHoverBackgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.gray[500])}, 0.25)`,
           pointBorderWidth: 0,
           pointHoverBorderWidth: 0,               
           clip: 20,
+          tension: 0.2,
         },
       ],
     })
