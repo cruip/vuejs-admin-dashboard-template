@@ -5,6 +5,8 @@
 **Mosaic Lite Vue** is a responsive dashboard template built on top of TailwindCSS and fully coded in Vue.js. This template is a great starting point for anyone who wants to create a user interface for SaaS products, administrator dashboards, modern web apps, and more.
 Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
 
+[Also available in React](https://github.com/cruip/tailwind-dashboard-template)
+
 Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
 
 ## Live demo
@@ -52,8 +54,6 @@ npm run build
 
 #### Customize configuration
 See [Configuration Reference](https://vitejs.dev/guide/).
-
-[![React version of Mosaic](https://user-images.githubusercontent.com/2683512/142938809-1ba3f7e3-3f43-47cb-bbb5-1618057cab6d.png)](https://github.com/cruip/tailwind-dashboard-template)
 
 ## Credits
 
