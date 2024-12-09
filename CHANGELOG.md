@@ -1,13 +1,17 @@
 # CHANGELOG.md
 
+## [3.1.0] 2024-12-08
+
+- Upgrade to Vite 6
+
 ## [3.0.0] - 2024-07-05
 
 - Mosaic Redesign
 
 ## [2.1.0] - 2023-12-08
 
-Update to Vite 5
-Update dependencies
+- Update to Vite 5
+- Update dependencies
 
 ## [2.0.1] - 2023-10-04
 
