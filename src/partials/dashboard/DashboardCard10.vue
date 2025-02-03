@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-full xl:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="col-span-full xl:col-span-6 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Customers</h2>
     </header>
@@ -9,7 +9,7 @@
       <div class="overflow-x-auto">
         <table class="table-auto w-full">
           <!-- Table header -->
-          <thead class="text-xs font-semibold uppercase dark:text-gray-500 bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50">
+          <thead class="text-xs font-semibold uppercase dark:text-gray-500 bg-gray-50 dark:bg-gray-700/50">
             <tr>
               <th class="p-2 whitespace-nowrap">
                 <div class="font-semibold text-left">Name</div>

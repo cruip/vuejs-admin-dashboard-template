@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Reason for Refunds</h2>
     </header>
@@ -22,7 +22,7 @@ import { ref } from 'vue'
 import BarChart from '../../charts/BarChart03.vue'
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils'
+import { getCssVariable } from '../../utils/Utils'
 
 export default {
   name: 'DashboardCard11',
@@ -36,40 +36,40 @@ export default {
         {
           label: 'Having difficulties using the product',
           data: [131],
-          backgroundColor: tailwindConfig().theme.colors.violet[500],
-          hoverBackgroundColor: tailwindConfig().theme.colors.violet[600],
+          backgroundColor: getCssVariable('--color-violet-500'),
+          hoverBackgroundColor: getCssVariable('--color-violet-600'),
           barPercentage: 1,
           categoryPercentage: 1,
         },
         {
           label: 'Missing features I need',
           data: [100],
-          backgroundColor: tailwindConfig().theme.colors.violet[700],
-          hoverBackgroundColor: tailwindConfig().theme.colors.violet[800],
+          backgroundColor: getCssVariable('--color-violet-700'),
+          hoverBackgroundColor: getCssVariable('--color-violet-800'),
           barPercentage: 1,
           categoryPercentage: 1,
         },
         {
           label: 'Not satisfied about the quality of the product',
           data: [81],
-          backgroundColor: tailwindConfig().theme.colors['sky'][500],
-          hoverBackgroundColor: tailwindConfig().theme.colors['sky'][600],
+          backgroundColor: getCssVariable('--color-sky-500'),
+          hoverBackgroundColor: getCssVariable('--color-sky-600'),
           barPercentage: 1,
           categoryPercentage: 1,
         },
         {
           label: 'The product doesn’t look as advertised',
           data: [65],
-          backgroundColor: tailwindConfig().theme.colors.green[500],
-          hoverBackgroundColor: tailwindConfig().theme.colors.green[600],
+          backgroundColor: getCssVariable('--color-green-500'),
+          hoverBackgroundColor: getCssVariable('--color-green-600'),
           barPercentage: 1,
           categoryPercentage: 1,
         },
         {
           label: 'Other',
           data: [72],
-          backgroundColor: tailwindConfig().theme.colors.gray[200],
-          hoverBackgroundColor: tailwindConfig().theme.colors.gray[300],
+          backgroundColor: getCssVariable('--color-gray-200'),
+          hoverBackgroundColor: getCssVariable('--color-gray-300'),
           barPercentage: 1,
           categoryPercentage: 1,
         },

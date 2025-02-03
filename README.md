@@ -3,6 +3,9 @@
 ![Mosaic TailwindCSS template preview](https://github.com/cruip/vuejs-admin-dashboard-template/assets/2683512/3b9af06c-f3b2-45c5-8c60-052989cbebcb)
 
 **Mosaic Lite Vue** is a responsive dashboard template built on top of TailwindCSS and fully coded in Vue.js. This template is a great starting point for anyone who wants to create a user interface for SaaS products, administrator dashboards, modern web apps, and more.
+
+**UPDATE 2025-02-04** Added Tailwind v4 support!
+
 Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
 
 [Also available in React](https://github.com/cruip/tailwind-dashboard-template)
@@ -39,17 +42,17 @@ This project was built with [Vue 3](https://v3.vuejs.org/) and [Vite](https://vi
 
 ### Project setup
 ```
-npm install
+pnpm install
 ```
 
 #### Compiles and hot-reloads for development
 ```
-npm run dev
+pnpm run dev
 ```
 
 #### Compiles and minifies for production
 ```
-npm run build
+pnpm run build
 ```
 
 #### Customize configuration
@@ -62,7 +65,7 @@ See [Configuration Reference](https://vitejs.dev/guide/).
 ## Terms and License
 
 - Released under the [GPL](https://www.gnu.org/licenses/gpl-3.0.html).
-- Copyright 2021 [Cruip](https://cruip.com/).
+- Copyright 2025 [Cruip](https://cruip.com/).
 - Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
 - Attribution is not required, although it is really appreciated.
 

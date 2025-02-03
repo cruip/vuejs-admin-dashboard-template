@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Top Countries</h2>
     </header>
@@ -14,7 +14,7 @@ import { ref } from 'vue'
 import DoughnutChart from '../../charts/DoughnutChart.vue'
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils'
+import { getCssVariable } from '../../utils/Utils'
 
 export default {
   name: 'DashboardCard06',
@@ -31,14 +31,14 @@ export default {
             35, 30, 35,
           ],
           backgroundColor: [
-            tailwindConfig().theme.colors.violet[500],
-            tailwindConfig().theme.colors.sky[500],
-            tailwindConfig().theme.colors.violet[800],
+            getCssVariable('--color-violet-500'),
+            getCssVariable('--color-sky-500'),
+            getCssVariable('--color-violet-800'),
           ],
           hoverBackgroundColor: [
-            tailwindConfig().theme.colors.violet[600],
-            tailwindConfig().theme.colors.sky[600],
-            tailwindConfig().theme.colors.violet[900],
+            getCssVariable('--color-violet-600'),
+            getCssVariable('--color-sky-600'),
+            getCssVariable('--color-violet-900'),
           ],
           borderWidth: 0,
         },

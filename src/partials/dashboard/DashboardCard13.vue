@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-full xl:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="col-span-full xl:col-span-6 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Income/Expenses</h2>
     </header>
@@ -8,7 +8,7 @@
       <!-- Card content -->
       <!-- "Today" group -->
       <div>
-        <header class="text-xs uppercase text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 rounded-sm font-semibold p-2">Today</header>
+        <header class="text-xs uppercase text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-gray-700/50 rounded-xs font-semibold p-2">Today</header>
         <ul class="my-1">
           <!-- Item -->
           <li class="flex px-2">
@@ -115,6 +115,6 @@
 
 <script>
 export default {
-  name: 'DashboardCard113',
+  name: 'DashboardCard11',
 }
 </script>

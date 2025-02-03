@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Real Time Value</h2>
       <Tooltip class="ml-2">
@@ -19,7 +19,7 @@ import { chartAreaGradient } from '../../charts/ChartjsConfig'
 import RealtimeChart from '../../charts/RealtimeChart.vue'
 
 // Import utilities
-import { tailwindConfig, hexToRGB } from '../../utils/Utils'
+import { adjustColorOpacity, getCssVariable } from '../../utils/Utils'
 
 export default {
   name: 'DashboardCard05',
@@ -95,15 +95,15 @@ export default {
               const chart = context.chart;
               const {ctx, chartArea} = chart;
               return chartAreaGradient(ctx, chartArea, [
-                { stop: 0, color: `rgba(${hexToRGB(tailwindConfig().theme.colors.violet[500])}, 0)` },
-                { stop: 1, color: `rgba(${hexToRGB(tailwindConfig().theme.colors.violet[500])}, 0.2)` }
+                { stop: 0, color: adjustColorOpacity(getCssVariable('--color-violet-500'), 0) },
+                { stop: 1, color: adjustColorOpacity(getCssVariable('--color-violet-500'), 0.2) }
               ]);
             },
-            borderColor: tailwindConfig().theme.colors.violet[500],
+            borderColor: getCssVariable('--color-violet-500'),
             borderWidth: 2,
             pointRadius: 0,
             pointHoverRadius: 3,
-            pointBackgroundColor: tailwindConfig().theme.colors.violet[500],
+            pointBackgroundColor: getCssVariable('--color-violet-500'),
             clip: 20,
             tension: 0.2,
           },

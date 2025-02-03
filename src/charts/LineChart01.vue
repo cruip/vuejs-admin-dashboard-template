@@ -5,7 +5,7 @@
 <script>
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useDark } from '@vueuse/core'
-import { chartColors } from './ChartjsConfig'
+import { getChartColors } from './ChartjsConfig'
 
 import {
   Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip,
@@ -25,7 +25,7 @@ export default {
     const canvas = ref(null)
     let chart = null
     const darkMode = useDark()
-    const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors
+    const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = getChartColors()
     
     onMounted(() => {
       const ctx = canvas.value

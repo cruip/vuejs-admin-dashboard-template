@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Sales Over Time (all stores)</h2>
     </header>
@@ -11,11 +11,10 @@
 
 <script>
 import { ref } from 'vue'
-import { chartAreaGradient } from '../../charts/ChartjsConfig'
 import LineChart from '../../charts/LineChart02.vue'
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils'
+import { getCssVariable } from '../../utils/Utils'
 
 export default {
   name: 'DashboardCard08',
@@ -45,13 +44,13 @@ export default {
             122, 110, 104, 152, 166, 233, 268,
             252, 284, 284, 333, 323,
           ],
-          borderColor: tailwindConfig().theme.colors.violet[500],
+          borderColor: getCssVariable('--color-violet-500'),
           fill: false,
           borderWidth: 2,
           pointRadius: 0,
           pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.violet[500],
-        pointHoverBackgroundColor: tailwindConfig().theme.colors.violet[500],
+        pointBackgroundColor: getCssVariable('--color-violet-500'),
+        pointHoverBackgroundColor: getCssVariable('--color-violet-500'),
         pointBorderWidth: 0,
         pointHoverBorderWidth: 0,          
         clip: 20,
@@ -66,12 +65,12 @@ export default {
             276, 0, 124, 42, 124, 88, 88,
             215, 156, 88, 124, 64,
           ],
-          borderColor: tailwindConfig().theme.colors.sky[500],
+          borderColor: getCssVariable('--color-sky-500'),
           fill: false,
           borderWidth: 2,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.sky[500],
+          pointBackgroundColor: getCssVariable('--color-sky-500'),
           clip: 20,
           tension: 0.2,
         },
@@ -84,12 +83,12 @@ export default {
             223, 188, 114, 162, 200, 150, 118,
             118, 76, 122, 230, 268,
           ],
-          borderColor: tailwindConfig().theme.colors.green[500],
+          borderColor: getCssVariable('--color-green-500'),
           fill: false,
           borderWidth: 2,
           pointRadius: 0,
           pointHoverRadius: 3,
-          pointBackgroundColor: tailwindConfig().theme.colors.green[500],
+          pointBackgroundColor: getCssVariable('--color-green-500'),
           clip: 20,
           tension: 0.2,
         },

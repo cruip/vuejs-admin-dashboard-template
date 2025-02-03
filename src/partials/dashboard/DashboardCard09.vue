@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-sm rounded-xl">
+  <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-gray-800 shadow-xs rounded-xl">
     <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60 flex items-center">
       <h2 class="font-semibold text-gray-800 dark:text-gray-100">Sales VS Refunds</h2>
       <Tooltip class="ml-2" size="lg">
@@ -17,7 +17,7 @@
       <!-- Change the height attribute to adjust the chart height -->
       <BarChart :data="chartData" width="595" height="248" />
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ import Tooltip from '../../components/Tooltip.vue'
 import BarChart from '../../charts/BarChart02.vue'
 
 // Import utilities
-import { tailwindConfig } from '../../utils/Utils'
+import { getCssVariable } from '../../utils/Utils'
 
 export default {
   name: 'DashboardCard09',
@@ -47,11 +47,11 @@ export default {
           data: [
             6200, 9200, 6600, 8800, 5200, 9200,
           ],
-          backgroundColor: tailwindConfig().theme.colors.violet[500],
-          hoverBackgroundColor: tailwindConfig().theme.colors.violet[600],
-              barPercentage: 0.7,
-              categoryPercentage: 0.7,
-              borderRadius: 4,
+          backgroundColor: getCssVariable('--color-violet-500'),
+          hoverBackgroundColor: getCssVariable('--color-violet-600'),
+          barPercentage: 0.7,
+          categoryPercentage: 0.7,
+          borderRadius: 4,
         },
         // Blue bars
         {
@@ -59,8 +59,8 @@ export default {
           data: [
             -4000, -2600, -5350, -4000, -7500, -2000,
           ],
-          backgroundColor: tailwindConfig().theme.colors.violet[200],
-          hoverBackgroundColor: tailwindConfig().theme.colors.violet[300],
+          backgroundColor: getCssVariable('--color-violet-200'),
+          hoverBackgroundColor: getCssVariable('--color-violet-300'),
           barPercentage: 0.7,
           categoryPercentage: 0.7,
           borderRadius: 4,
@@ -70,7 +70,7 @@ export default {
 
     return {
       chartData,
-    } 
+    }
   }
 }
 </script>

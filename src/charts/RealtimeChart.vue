@@ -13,7 +13,7 @@
 <script>
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useDark } from '@vueuse/core'
-import { chartColors } from './ChartjsConfig'
+import { getChartColors } from './ChartjsConfig'
 
 import {
   Chart, LineController, LineElement, PointElement, LinearScale, TimeScale, Tooltip,
@@ -21,7 +21,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { tailwindConfig, hexToRGB, formatValue } from '../utils/Utils'
+import { adjustColorOpacity, getCssVariable, formatValue } from '../utils/Utils'
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Tooltip)
 
@@ -35,7 +35,7 @@ export default {
     const chartDeviation = ref(null)
     let chart = null
     const darkMode = useDark()
-    const { textColor, gridColor, tooltipTitleColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors
+    const { textColor, gridColor, tooltipTitleColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = getChartColors()
 
     // function that updates header values
     const handleHeaderValues = (data, chartValue, chartDeviation) => {
@@ -44,11 +44,11 @@ export default {
       const diff = ((currentValue - previousValue) / previousValue) * 100
       chartValue.value.innerHTML = data.datasets[0].data[data.datasets[0].data.length - 1]
       if (diff < 0) {
-        chartDeviation.value.style.backgroundColor = `rgba(${hexToRGB(tailwindConfig().theme.colors.red[500])}, 0.2)`
-        chartDeviation.value.style.color = tailwindConfig().theme.colors.red[700];
+        chartDeviation.value.style.backgroundColor = adjustColorOpacity(getCssVariable('--color-red-500'), 0.2)
+        chartDeviation.value.style.color = getCssVariable('--color-red-700');
       } else {
-        chartDeviation.value.style.backgroundColor = `rgba(${hexToRGB(tailwindConfig().theme.colors.green[500])}, 0.2)`
-        chartDeviation.value.style.color = tailwindConfig().theme.colors.green[700];
+        chartDeviation.value.style.backgroundColor = adjustColorOpacity(getCssVariable('--color-green-500'), 0.2)
+        chartDeviation.value.style.color = getCssVariable('--color-green-700');
       }      
       chartDeviation.value.innerHTML = `${diff > 0 ? '+' : ''}${diff.toFixed(2)}%`
     }    

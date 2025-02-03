@@ -1,6 +1,6 @@
 <template>
   <div v-show="open" class="fixed bottom-0 right-0 w-full md:bottom-8 md:right-12 md:w-auto z-50">
-    <div class="bg-gray-800 border border-transparent dark:border-gray-700/60 text-gray-50 text-sm p-3 md:rounded shadow-lg flex justify-between">
+    <div class="bg-gray-800 border border-transparent dark:border-gray-700/60 text-gray-50 text-sm p-3 md:rounded-sm shadow-lg flex justify-between">
       <div class='text-gray-500 inline-flex'><a class="font-medium hover:underline text-gray-50" href="https://github.com/cruip/vuejs-admin-dashboard-template" target="_blank" rel="noreferrer">Download<span class="hidden sm:inline"> on GitHub</span></a> <span class="italic px-1.5">or</span> <a class="font-medium hover:underline text-emerald-400" href="https://cruip.com/mosaic/" target="_blank" rel="noreferrer">Check Premium Version</a></div>
       <button class="text-gray-500 hover:text-gray-400 pl-2 ml-3 border-l border-gray-700/60"  @click="open = false">
         <span class="sr-only">Close</span>

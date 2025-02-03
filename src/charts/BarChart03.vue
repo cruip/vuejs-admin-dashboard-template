@@ -13,7 +13,7 @@
 <script>
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useDark } from '@vueuse/core'
-import { chartColors } from './ChartjsConfig'
+import { getChartColors } from './ChartjsConfig'
 
 import {
   Chart, BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend,
@@ -21,7 +21,7 @@ import {
 import 'chartjs-adapter-moment'
 
 // Import utilities
-import { tailwindConfig } from '../utils/Utils'
+import { getCssVariable } from '../utils/Utils'
 
 Chart.register(BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend)
 
@@ -34,7 +34,7 @@ export default {
     const legend = ref(null)
     let chart = null
     const darkMode = useDark()
-    const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors    
+    const { tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = getChartColors()
     
     onMounted(() => {
 
@@ -108,22 +108,22 @@ export default {
               li.style.display = 'flex'
               li.style.justifyContent = 'space-between'
               li.style.alignItems = 'center'
-              li.style.paddingTop = tailwindConfig().theme.padding[2.5]
-              li.style.paddingBottom = tailwindConfig().theme.padding[2.5]
+              li.style.paddingTop = '10px'
+              li.style.paddingBottom = '10px'
               const wrapper = document.createElement('div')
               wrapper.style.display = 'flex'
               wrapper.style.alignItems = 'center'
               const box = document.createElement('div')
-              box.style.width = tailwindConfig().theme.width[3]
-              box.style.height = tailwindConfig().theme.width[3]
-              box.style.borderRadius = tailwindConfig().theme.borderRadius.sm
-              box.style.marginRight = tailwindConfig().theme.margin[3]
+              box.style.width = '12px'
+              box.style.height = '12px'
+              box.style.borderRadius = '4px'
+              box.style.marginRight = '12px'
               box.style.backgroundColor = item.fillStyle
               const label = document.createElement('div')
               const value = document.createElement('div')
-              value.style.fontWeight = tailwindConfig().theme.fontWeight.medium
-              value.style.marginLeft = tailwindConfig().theme.margin[3]
-              value.style.color = item.text === 'Other' ? tailwindConfig().theme.colors.gray[400] : item.fillStyle
+              value.style.fontWeight = '500'
+              value.style.marginLeft = '12px'
+              value.style.color = item.text === 'Other' ? getCssVariable('--color-gray-400') : item.fillStyle
               const theValue = c.data.datasets[item.datasetIndex].data.reduce((a, b) => a + b, 0)
               const valueText = document.createTextNode(`${parseInt(theValue / max * 100)}%`)
               const labelText = document.createTextNode(item.text)
